@@ -1,6 +1,6 @@
 ---
 name: create-github-pr
-description: Create a pull request from the current branch with title, body, labels, reviewers, and optional annotated screenshots
+description: Create a GitHub pull request from the current branch
 argument-hint: "[scope]"
 related:
   - git-commit
