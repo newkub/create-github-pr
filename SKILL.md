@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - git-commit
   - git-push
+  - refactor-commit
   - run-check
   - run-test
   - capture-terminal
@@ -12,7 +13,7 @@ related:
   - open-github-pr
   - merge-github-pr
   - update-github-pr
-  - implement-github-issue
+  - implement-github-issue-by-me
   - ask-me
   - open-web
 ---
@@ -23,7 +24,7 @@ related:
 
 ## Scope
 
-- ใช้หลัง `/implement-github-issue` หรือเมื่อต้องการ merge งานเข้า base branch
+- ใช้หลัง `/implement-github-issue-by-me` หรือเมื่อต้องการ merge งานเข้า base branch
 - รองรับ `/open-github-pr`, `/update-github-pr`, `/merge-github-pr`
 - ใช้ annotated screenshots และ accordion test cases เมื่อ PR เปลี่ยน UI
 
@@ -37,6 +38,7 @@ related:
 2. รัน `git status --short` เพื่อดูไฟล์ที่เปลี่ยน
 3. ถ้ามี uncommitted changes ให้ใช้ `/git-commit` ก่อน
 4. รัน `git log --oneline main..HEAD` เพื่อ review commits
+5. ถ้า commits เป็น WIP หรือ history รก → ทำ `/refactor-commit` ให้สะอาดก่อน push
 
 ### 2. Push Branch
 
