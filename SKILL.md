@@ -1,6 +1,6 @@
 ---
 name: create-github-pr
-description: Create a GitHub pull request from the current branch
+description: สร้าง GitHub pull request จาก branch ปัจจุบัน พร้อม title, body, labels, reviewers, screenshots
 argument-hint: "[scope]"
 related:
   - git-commit
@@ -10,100 +10,98 @@ related:
   - capture-terminal
   - record-video-terminal
   - open-github-pr
-  - open-web
   - merge-github-pr
   - update-github-pr
   - implement-github-issue
-  - open-github-repo
-  - open-github-repo-personal
-  - open-github-repo-org
+  - ask-me
+  - open-web
 ---
 
 ## Goal
 
-Create a pull request from the current branch with title, body, labels, reviewers, and optional annotated screenshots following project conventions.
+สร้าง pull request จาก branch ปัจจุบัน พร้อม title, body, labels, reviewers และ screenshots ตาม conventions ของ project
 
 ## Scope
 
-- For skills: `implement-github-issue`, `open-github-pr`, `open-github-repo`, `open-github-repo-personal`, `open-github-repo-org`, `update-github-pr`
-- Use after implementation when a PR is needed to merge into the base branch
-- Use annotated screenshots and accordion test cases when the PR changes UX/UI
+- ใช้หลัง `/implement-github-issue` หรือเมื่อต้องการ merge งานเข้า base branch
+- รองรับ `/open-github-pr`, `/update-github-pr`, `/merge-github-pr`
+- ใช้ annotated screenshots และ accordion test cases เมื่อ PR เปลี่ยน UI
 
 ## Execute
 
 ### 1. Prepare
 
-> Goal: Check state before creating the PR
+> Goal: ตรวจสอบ state ก่อนสร้าง PR
 
-1. Confirm you are on the correct branch, not `main`
-2. Run `git status --short` to see changed files
-3. If there are uncommitted changes, use `/git-commit` first
-4. Run `git log --oneline main..HEAD` to review commits
+1. ยืนยันว่าอยู่บน branch ที่ถูกต้อง ไม่ใช่ `main`
+2. รัน `git status --short` เพื่อดูไฟล์ที่เปลี่ยน
+3. ถ้ามี uncommitted changes ให้ใช้ `/git-commit` ก่อน
+4. รัน `git log --oneline main..HEAD` เพื่อ review commits
 
 ### 2. Push Branch
 
-> Goal: Push the branch to remote
+> Goal: Push branch ขึ้น remote
 
-1. Run `/git-push` or `git push -u origin <branch>`
-2. Confirm the branch was pushed successfully
+1. รัน `/git-push` หรือ `git push -u origin <branch>`
+2. ยืนยันว่า branch push สำเร็จ
 
 ### 3. Run Checks
 
-> Goal: Verify quality before creating the PR
+> Goal: ตรวจคุณภาพก่อนสร้าง PR
 
-1. Run `/run-check` (lint, typecheck, scan)
-2. Run `/run-test` for tests
-3. If checks fail, run `/resolve-errors` first
+1. รัน `/run-check` (lint, typecheck, scan)
+2. รัน `/run-test` สำหรับ tests
+3. ถ้า checks ล้มเหลว ให้ `/resolve-errors` ก่อน
 
 ### 4. Build PR Body
 
-> Goal: Create a feature-based PR title and body with evidence
+> Goal: สร้าง PR title และ body พร้อม evidence
 
-1. Create the title from commit messages or the task, using conventional commit format: `<type>(<scope>): <subject>`
-2. If the repo has `.github/pull_request_template.md`, read and use it as the base
-3. If not, read `create-github-pr/templates/index.md` and pick a template by type:
+1. สร้าง title จาก commit messages หรือ task โดยใช้ conventional commits: `<type>(<scope>): <subject>`
+2. ถ้า repo มี `.github/pull_request_template.md` ให้อ่านและใช้เป็น base
+3. ถ้าไม่มี ให้อ่าน `create-github-pr/templates/index.md` และเลือก template ตาม type:
    - `feature` → `templates/feature.md`
    - `bugfix` → `templates/bugfix.md`
    - `refactor` → `templates/refactor.md`
    - `docs` → `templates/docs.md`
    - `hotfix` → `templates/hotfix.md`
-4. Read the selected template and replace placeholders with real data
-5. If the PR contains multiple features, use `feature.md` and split the body into multiple `## Feature: <name>` sections
-6. Do not use mockups, placeholders, or unverified images/videos in the Image/Video column
-7. If unclear, use `/ask-me`
+4. อ่าน template ที่เลือกแล้วแทนที่ placeholders ด้วยข้อมูลจริง
+5. ถ้า PR มีหลาย feature ให้ใช้ `feature.md` แล้วแบ่ง body เป็นหลาย `## Feature: <name>`
+6. อย่าใช้ mockups, placeholders หรือ images/videos ที่ยังไม่ verify ในคอลัมน์ Image/Video
+7. ถ้าไม่ชัด ใช้ `/ask-me`
 
 ### 5. Capture Or Build Source Images
 
-> Goal: Get real source images before annotating
+> Goal: หา source images จริงก่อน annotate
 
-1. If the PR changes UI:
-   - Run dev server or staging preview
-   - Use `browser_preview` or `bunx playwright screenshot` to capture the screen
-   - Use viewport `1280x720`
-2. If the PR is terminal-only:
-   - Use `capture-terminal` or `record-video-terminal`
-   - Run test/build/lint specific to the test case
-3. Save source images to `docs/screenshots/<release>/source/`
+1. ถ้า PR เปลี่ยน UI:
+   - รัน dev server หรือ staging preview
+   - ใช้ `browser_preview` หรือ `bunx playwright screenshot` capture หน้าจอ
+   - ใช้ viewport `1280x720`
+2. ถ้า PR เป็น terminal-only:
+   - ใช้ `capture-terminal` หรือ `record-video-terminal`
+   - รัน test/build/lint เฉพาะ test case
+3. บันทึก source images ลง `docs/screenshots/<release>/source/`
 
 ### 6. Annotate Screenshots
 
-> Goal: Add arrows and text to point out what changed
+> Goal: เพิ่มลูกศรและข้อความบอกสิ่งที่เปลี่ยน
 
-1. Use the `create-github-pr` package CLI:
+1. ใช้ CLI ของ `create-github-pr` package:
    ```bash
    bunx tsx src/annotate.ts --config homepage-hero.json
    ```
-2. The `config` JSON specifies:
+2. ไฟล์ `config` JSON ระบุ:
    - `input`: original image
    - `output`: output image
-   - `annotations`: array of `text`, `arrow`, `box`
-3. The script generates HTML and calls `bunx --bun playwright screenshot` automatically
-4. Or use `bunx tsx src/pr-body.ts` to generate a PR body from JSON
-5. Verify the output images before using them
+   - `annotations`: array ของ `text`, `arrow`, `box`
+3. Script สร้าง HTML แล้วเรียก `bunx --bun playwright screenshot` อัตโนมัติ
+4. หรือใช้ `bunx tsx src/pr-body.ts` เพื่อ generate PR body จาก JSON
+5. ตรวจ output images ก่อนใช้
 
 ### 7. Build PR Body With Test Cases
 
-> Goal: Build a PR body with accordion test cases and evidence
+> Goal: สร้าง PR body พร้อม accordion test cases และ evidence
 
 ```markdown
 ## Feature Summary
@@ -135,59 +133,59 @@ Create a pull request from the current branch with title, body, labels, reviewer
 Requirements:
 
 - 1 test case = 1 `<details>`
-- Each test case must have a staging preview link (not a clickable image)
-- Place annotated images inside `<details>`
-- If no staging is available, use a local preview URL with a note for reviewers
+- แต่ละ test case ต้องมี staging preview link แยกจาก image
+- วาง annotated images ไว้ข้างใน `<details>`
+- ถ้าไม่มี staging ให้ใช้ local preview URL พร้อมหมายเหตุสำหรับ reviewer
 
 ### 8. Create PR
 
-> Goal: Create the pull request
+> Goal: สร้าง pull request
 
-1. Run `gh pr create --title "<title>" --body "<body>" --base <base-branch>`
-2. Add labels with `--label "<label>"`
-3. Add reviewers with `--reviewer <reviewer>`
-4. Add assignees with `--assignee <user>`
-5. If it is a draft, use `--draft`
+1. รัน `gh pr create --title "<title>" --body "<body>" --base <base-branch>`
+2. เพิ่ม labels ด้วย `--label "<label>"`
+3. เพิ่ม reviewers ด้วย `--reviewer <reviewer>`
+4. เพิ่ม assignees ด้วย `--assignee <user>`
+5. ถ้าเป็น draft ใช้ `--draft`
 
 ### 9. Link Issue
 
-> Goal: Link related issues
+> Goal: เชื่อมโยง issue ที่เกี่ยวข้อง
 
-1. If an issue number exists, add `Closes #<issue>` to the body
-2. If not, ask the user whether to link an issue
-3. If a project board exists, use `gh project item-add`
+1. ถ้ามี issue number เพิ่ม `Closes #<issue>` ลง body
+2. ถ้าไม่มี ถาม user ว่าต้องการ link issue หรือไม่
+3. ถ้ามี project board ใช้ `gh project item-add`
 
 ### 10. Report
 
-> Goal: Summarize the result
+> Goal: สรุปผล
 
-1. Report the PR number, URL, and title
-2. Report status checks and labels
-3. After creating the PR, open it in a browser with `/open-web` or `gh pr view --web`
-4. If the user wants to merge next, use `/merge-github-pr`
+1. รายงาน PR number, URL, และ title
+2. รายงาน status checks และ labels
+3. หลังสร้าง PR เปิดดูใน browser ด้วย `/open-web` หรือ `gh pr view --web`
+4. ถ้า user ต้องการ merge ต่อ ให้ส่งต่อ `/merge-github-pr`
 
 ## Rules
 
-- Run checks before creating a PR
-- Push the branch before creating a PR
-- Do not create a PR directly on `main`
-- Use a PR template if one exists
-- Add `Closes #<issue>` if relevant
-- Do not use mockups or placeholders for images/videos in feature tables; use evidence from `/record-video-terminal`, `/capture-terminal`, or the `create-github-pr` annotate CLI
-- 1 test case must have at least 1 annotated image for UI changes
-- Arrows and text must point directly to the changed feature
-- Staging preview link must be separate from the image, not the image itself
-- Use `<details>` for accordion test cases
-- If you cannot capture UI, use a terminal screenshot with a note
-- For private repos, use release assets or GitHub attachments to display images
-- If the title/body is unclear, ask the user
+- รัน checks ก่อนสร้าง PR
+- Push branch ก่อนสร้าง PR
+- ห้ามสร้าง PR บน `main`
+- ใช้ PR template ถ้ามี
+- เพิ่ม `Closes #<issue>` ถ้าเกี่ยวข้อง
+- อย่าใช้ mockups หรือ placeholders สำหรับ images/videos ในตาราง feature ให้ใช้ evidence จาก `/record-video-terminal`, `/capture-terminal` หรือ `create-github-pr` annotate CLI
+- 1 test case ต้องมี annotated image อย่างน้อย 1 ภาพสำหรับ UI changes
+- ลูกศรและข้อความต้องชี้ไปยัง feature ที่เปลี่ยนโดยตรง
+- Staging preview link ต้องแยกจาก image ไม่ใช่ image เอง
+- ใช้ `<details>` สำหรับ accordion test cases
+- ถ้า capture UI ไม่ได้ ให้ใช้ terminal screenshot พร้อมหมายเหตุ
+- สำหรับ private repo ใช้ release assets หรือ GitHub attachments เพื่อแสดง images
+- ถ้า title/body ไม่ชัด ถาม user
 
 ## Expected Outcome
 
-- PR is created with a feature-based title, body, and labels
-- Each feature has a heading and a 5-column table (Description, Benefit, Why, File Change, Image/Video)
-- Image/Video in the table is real evidence; no mockups
-- Branch is pushed
-- Checks pass before the PR is created
-- Issue is linked if available
-- UI-changing PRs include annotated screenshots inside accordion test cases
+- PR ถูกสร้างด้วย feature-based title, body, labels
+- แต่ละ feature มี heading และตาราง 5 คอลัมน์ (Description, Benefit, Why, File Change, Image/Video)
+- Image/Video ในตารางเป้น evidence จริง ไม่ใช่ mockups
+- Branch ถูก push
+- Checks ผ่านก่อนสร้าง PR
+- Issue ถูก link ถ้ามี
+- PR ที่เปลี่ยน UI มี annotated screenshots ข้างใน accordion test cases
