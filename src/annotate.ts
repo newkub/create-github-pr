@@ -1,6 +1,6 @@
 import { generateHtml, screenshotHtml, loadConfig } from "./core/index.js";
 
-const args = process.argv.slice(2);
+const args = Bun.argv.slice(2);
 let configPath = "";
 
 for (let i = 0; i < args.length; i++) {

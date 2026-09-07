@@ -1,7 +1,7 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 import { buildPrBody, type PrBodyInput } from "./pr-body.js";
 
-const args = process.argv.slice(2);
+const args = Bun.argv.slice(2);
 
 function getArg(name: string): string | undefined {
   const index = args.findIndex((a) => a === `--${name}`);

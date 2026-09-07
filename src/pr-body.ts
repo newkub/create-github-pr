@@ -120,8 +120,8 @@ function slug(name: string) {
 }
 
 // CLI entry point
-const inputPath = process.argv.find((a) => a.startsWith("--input="))?.slice("--input=".length);
-const outputPath = process.argv.find((a) => a.startsWith("--output="))?.slice("--output=".length);
+const inputPath = Bun.argv.find((a) => a.startsWith("--input="))?.slice("--input=".length);
+const outputPath = Bun.argv.find((a) => a.startsWith("--output="))?.slice("--output=".length);
 
 async function runCli() {
   if (!inputPath || !outputPath) return;
