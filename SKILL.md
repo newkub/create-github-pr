@@ -7,10 +7,10 @@ related:
   - git-push
   - refactor-commit
   - run-check
-  - run-test
-  - capture-terminal
+  - run-test-unit
+  - capture
   - record-video-terminal
-  - open-github-pr
+  - open-github
   - merge-github-pr
   - update-github-pr
   - implement-github-issue-by-me
@@ -25,7 +25,7 @@ related:
 ## Scope
 
 - ใช้หลัง `/implement-github-issue-by-me` หรือเมื่อต้องการ merge งานเข้า base branch
-- รองรับ `/open-github-pr`, `/update-github-pr`, `/merge-github-pr`
+- รองรับ `/open-github`, `/update-github-pr`, `/merge-github-pr`
 - ใช้ annotated screenshots และ accordion test cases เมื่อ PR เปลี่ยน UI
 
 ## Execute
@@ -52,7 +52,7 @@ related:
 > Goal: ตรวจคุณภาพก่อนสร้าง PR
 
 1. รัน `/run-check` (lint, typecheck, scan)
-2. รัน `/run-test` สำหรับ tests
+2. รัน `/run-test-unit` สำหรับ tests
 3. ถ้า checks ล้มเหลว ให้ `/resolve-errors` ก่อน
 
 ### 4. Build PR Body
@@ -81,7 +81,7 @@ related:
    - ใช้ `browser_preview` หรือ `bunx playwright screenshot` capture หน้าจอ
    - ใช้ viewport `1280x720`
 2. ถ้า PR เป็น terminal-only:
-   - ใช้ `capture-terminal` หรือ `record-video-terminal`
+   - ใช้ `capture` หรือ `record-video-terminal`
    - รัน test/build/lint เฉพาะ test case
 3. บันทึก source images ลง `docs/screenshots/<release>/source/`
 
@@ -173,7 +173,7 @@ Requirements:
 - ห้ามสร้าง PR บน `main`
 - ใช้ PR template ถ้ามี
 - เพิ่ม `Closes #<issue>` ถ้าเกี่ยวข้อง
-- อย่าใช้ mockups หรือ placeholders สำหรับ images/videos ในตาราง feature ให้ใช้ evidence จาก `/record-video-terminal`, `/capture-terminal` หรือ `create-github-pr` annotate CLI
+- อย่าใช้ mockups หรือ placeholders สำหรับ images/videos ในตาราง feature ให้ใช้ evidence จาก `/record-video-terminal`, `/capture` หรือ `create-github-pr` annotate CLI
 - 1 test case ต้องมี annotated image อย่างน้อย 1 ภาพสำหรับ UI changes
 - ลูกศรและข้อความต้องชี้ไปยัง feature ที่เปลี่ยนโดยตรง
 - Staging preview link ต้องแยกจาก image ไม่ใช่ image เอง
