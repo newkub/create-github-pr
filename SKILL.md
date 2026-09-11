@@ -7,7 +7,7 @@ related:
   - git-push
   - refactor-commit
   - run-check
-  - run-test-unit
+  - run-test
   - capture
   - record-video-terminal
   - open-github
@@ -52,7 +52,7 @@ related:
 > Goal: ตรวจคุณภาพก่อนสร้าง PR
 
 1. รัน `/run-check` (lint, typecheck, scan)
-2. รัน `/run-test-unit` สำหรับ tests
+2. รัน `/run-test` สำหรับ tests
 3. ถ้า checks ล้มเหลว ให้ `/resolve-errors` ก่อน
 
 ### 4. Build PR Body
