@@ -10,12 +10,12 @@ related:
   - run-test
   - capture
   - record-video-terminal
-  - open-github
-  - merge-github-pr
+  - open
+  - merge
   - update-github-pr
   - implement-github-issue-by-me
   - ask-me
-  - open-web
+  - open
 ---
 
 ## Goal
@@ -25,7 +25,7 @@ related:
 ## Scope
 
 - ใช้หลัง `/implement-github-issue-by-me` หรือเมื่อต้องการ merge งานเข้า base branch
-- รองรับ `/open-github`, `/update-github-pr`, `/merge-github-pr`
+- รองรับ `/open github`, `/update-github-pr`, `/merge github-pr`
 - ใช้ annotated screenshots และ accordion test cases เมื่อ PR เปลี่ยน UI
 
 ## Execute
@@ -163,8 +163,8 @@ Requirements:
 
 1. รายงาน PR number, URL, และ title
 2. รายงาน status checks และ labels
-3. หลังสร้าง PR เปิดดูใน browser ด้วย `/open-web` หรือ `gh pr view --web`
-4. ถ้า user ต้องการ merge ต่อ ให้ส่งต่อ `/merge-github-pr`
+3. หลังสร้าง PR เปิดดูใน browser ด้วย `/open web` หรือ `gh pr view --web`
+4. ถ้า user ต้องการ merge ต่อ ให้ส่งต่อ `/merge github-pr`
 
 ## Rules
 

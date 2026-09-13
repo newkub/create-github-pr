@@ -17,3 +17,4 @@
 - title ใช้ conventional commit format: `<type>(<scope>): <subject>`
 - body ห้ามใช้ mockup หรือ placeholder สำหรับ Image/Video ต้องเป็นหลักฐานจริงจาก `/record-video-terminal` หรือ `/capture-terminal`
 - ถ้าไม่ชัดว่าใช้ type ไหน → ทำ `/ask-me`
+
