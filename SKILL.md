@@ -15,7 +15,6 @@ related:
   - update-github-pr
   - implement-github-issue-by-me
   - ask-me
-  - open
 ---
 
 ## Goal
