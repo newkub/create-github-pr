@@ -15,6 +15,6 @@
 - ถ้า project มี `.github/pull_request_template.md` → ใช้ template ของ repo ก่อน
 - ถ้า PR ประกอบด้วยหลาย feature หรือ change → ใช้ `feature.md` แล้วแบ่งเป็น section ตาม feature
 - title ใช้ conventional commit format: `<type>(<scope>): <subject>`
-- body ห้ามใช้ mockup หรือ placeholder สำหรับ Image/Video ต้องเป็นหลักฐานจริงจาก `/record-video-terminal` หรือ `/capture-terminal`
+- body ห้ามใช้ mockup หรือ placeholder สำหรับ Image/Video ต้องเป็นหลักฐานจริงจาก `/record-video-terminal` หรือ `/capture terminal`
 - ถ้าไม่ชัดว่าใช้ type ไหน → ทำ `/ask-me`
 
