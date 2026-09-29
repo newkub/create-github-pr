@@ -13,8 +13,9 @@ related:
   - open
   - merge
   - update-github-pr
-  - implement-github-issue-by-me
+  - resolve-github-issue-by-me
   - ask-me
+
 ---
 
 ## Goal
@@ -23,7 +24,7 @@ related:
 
 ## Scope
 
-- ใช้หลัง `/implement-github-issue-by-me` หรือเมื่อต้องการ merge งานเข้า base branch
+- ใช้หลัง `/resolve-github-issue-by-me` หรือเมื่อต้องการ merge งานเข้า base branch
 - รองรับ `/open github`, `/update-github-pr`, `/merge github-pr`
 - ใช้ annotated screenshots และ accordion test cases เมื่อ PR เปลี่ยน UI
 
