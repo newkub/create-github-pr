@@ -9,7 +9,7 @@ related:
   - run-check
   - run-test
   - capture
-  - record-video-terminal
+  - record-video-terminal-with-asciinema
   - open
   - merge
   - update-github-pr
@@ -81,7 +81,7 @@ related:
    - ใช้ `browser_preview` หรือ `bunx playwright screenshot` capture หน้าจอ
    - ใช้ viewport `1280x720`
 2. ถ้า PR เป็น terminal-only:
-   - ใช้ `capture` หรือ `record-video-terminal`
+   - ใช้ `capture` หรือ `record-video-terminal-with-asciinema`
    - รัน test/build/lint เฉพาะ test case
 3. บันทึก source images ลง `docs/screenshots/<release>/source/`
 
@@ -173,7 +173,7 @@ Requirements:
 - ห้ามสร้าง PR บน `main`
 - ใช้ PR template ถ้ามี
 - เพิ่ม `Closes #<issue>` ถ้าเกี่ยวข้อง
-- อย่าใช้ mockups หรือ placeholders สำหรับ images/videos ในตาราง feature ให้ใช้ evidence จาก `/record-video-terminal`, `/capture` หรือ `create-github-pr` annotate CLI
+- อย่าใช้ mockups หรือ placeholders สำหรับ images/videos ในตาราง feature ให้ใช้ evidence จาก `/record-video-terminal-with-asciinema`, `/capture` หรือ `create-github-pr` annotate CLI
 - 1 test case ต้องมี annotated image อย่างน้อย 1 ภาพสำหรับ UI changes
 - ลูกศรและข้อความต้องชี้ไปยัง feature ที่เปลี่ยนโดยตรง
 - Staging preview link ต้องแยกจาก image ไม่ใช่ image เอง
